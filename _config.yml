@@ -18,9 +18,9 @@ google_analytics: #UA—XXXXXXXX-X
 disqus_shortname: #disqus shortname
 
 user:
-  name: Catbook
+  name: sumi
   pic: /assets/img/profile_img1.jpg
-  picAlt: "catbook"
+  picAlt: "sumi"
   job: a category-centric theme
   aboutme: true # comment this out if you don't need the 'about' page.
 
