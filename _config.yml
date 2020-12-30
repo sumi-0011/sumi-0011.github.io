@@ -19,7 +19,7 @@ disqus_shortname: #disqus shortname
 
 user:
   name: sumi
-  pic: /assets/img/profile_img2.jpg
+  pic: /assets/img/profile_img1.jpg
   picAlt: "sumi"
   job: git-blog
   aboutme: true # comment this out if you don't need the 'about' page.
