@@ -21,7 +21,7 @@ user:
   name: sumi
   pic: /assets/img/profile_img1.jpg
   picAlt: "sumi"
-  job: a category-centric theme
+  job: git-blog
   aboutme: true # comment this out if you don't need the 'about' page.
 
 exclude:
