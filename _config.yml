@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "baseurl"
 baseurl: # the subpath of the site
 url: http://starry99.github.io/catbook # the base hostname & protocol for your site
 
-permalink: /:year:month-:month/:title
+permalink: /:month-:month/:title
 timezone:
 
 favicon: /assets/img/favicon.ico
