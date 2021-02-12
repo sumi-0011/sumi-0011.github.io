@@ -1,8 +1,8 @@
 # Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
+title: sumi's gitBlog
+description: hello
 url: https://vszhub.github.io
-avatar: /avatar.jpeg
+avatar: /hi.jpeg
 paginate: 5
 permalink: pretty
 cover_image: /bg.jpeg
