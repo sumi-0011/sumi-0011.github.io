@@ -189,3 +189,11 @@ ul.dropdown-menu>li>a>i.fa {
     width: 1.3em;
 }
 
+
+/* 추가	 */
+.img-circle {
+	max-width: 150px;
+	max-height: 150px;
+	width: 150px;
+	height: 150px;
+}
