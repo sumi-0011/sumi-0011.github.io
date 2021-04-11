@@ -20,12 +20,12 @@ description: Stylish Jekyll Theme
 author:
   name: sumi
   email: selina2000@naver.com
-  github: dbtek
-  twitter: dbtek
-  pinterest: asd123
-  linkedin: asd123
-  bio: Your stylish, minimalist theme!
-  email_md5: 726351295ec82e145928582f595aa3aa
+  github: sumi
+  twitter: sumi
+  pinterest: sumi0011
+  linkedin: sumi0011
+  bio: Hi!
+  email_md5: selina2000@naver.com
 
 rss_path: feed.xml
 categories_path: categories.html
