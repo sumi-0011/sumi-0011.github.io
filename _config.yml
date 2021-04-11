@@ -5,9 +5,9 @@ paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
-disqus: dbyll
-google_analytics: dbyll
-title: dbyll
+disqus: sumi
+google_analytics: sumi
+title: sumi
 
 defaults:
   -
@@ -20,9 +20,9 @@ description: Stylish Jekyll Theme
 author:
   name: sumi
   email: selina2000@naver.com
-  github: sumi
+  github: sumi-0011
   twitter: sumi
-  pinterest: sumi0011
+  pinterest: selina20000208
   linkedin: sumi0011
   bio: Hi!
   email_md5: selina2000@naver.com
