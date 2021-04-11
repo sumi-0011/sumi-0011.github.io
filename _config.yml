@@ -18,9 +18,9 @@ defaults:
 
 description: Stylish Jekyll Theme
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
-  github: dbtek
+  name: sumi Byun
+  email: selina2000@naver.com
+  github: sumi0011
   twitter: dbtek
   pinterest: asd123
   linkedin: asd123
@@ -34,7 +34,7 @@ tags_path: tags.html
 # set it as url of an image
 # sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
 
-BASE_PATH:
+BASE_PATH: https://sumi-0011.github.io/
 
 plugins:
   - jekyll-paginate
