@@ -8,7 +8,7 @@ categories: [React study]
 comments: false
 
 ---
-### 2021/04/11일 react study
+#### 2021/04/11일 react study
 
 - 주제 : https://heekang2271.github.io/react-study/array/
   
