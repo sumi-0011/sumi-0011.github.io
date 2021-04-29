@@ -123,7 +123,7 @@ article.home h4,
 article.home h5,
 article.home h6 {
 	font-family: 'Ubuntu', sans-serif;
-	/* color: #FF6666; */
+	/* color: ; *FF6666*/
 }
 
 article.home h1 a,
@@ -172,7 +172,7 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.badge { background: #F2756A; }
+.badge { background: #774fb7; }
 
 #nav-menu{
     position: fixed;
