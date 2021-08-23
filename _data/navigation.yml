@@ -12,7 +12,7 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
- - title: "Categories"
+  - title: "Categories"
     url: /categories/
   - title: "Tags"
     url: /tags/
