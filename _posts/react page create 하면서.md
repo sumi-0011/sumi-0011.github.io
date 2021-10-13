@@ -187,8 +187,55 @@ import Button from 'react-bootstrap/Button';
 import { Button } from 'source/_posts/style/react-bootstrap';
 ```
 
+---
+
+### Link를 사용하면서 props넘기기
+
+https://rrecoder.tistory.com/101
+
+React에서는 링크를 걸어줄때 **<a> tage** 대신 **<Link>**를 사용하게 된다.
+
+a tag를 사용하게 되면 링크를 누를때마다 재 렌더링 되기 때문에 웹페이지가 새로고침 되버리기 때문이다.
+
+ 
+
+<Link> 는 **링크를 연결**시켜줄 뿐 아니라 **object 전달**이 가능함 
+
+```
+<Link to={{
+            pathname: `/movie/${id}`,
+            state: {
+                year:year,
+                title:title,
+                summary:summary,
+                poster:poster,
+                genres:genres
+            }
+          }}>
+```
+
+이런식으로 path 와 state를 지정하여 링크연결, 속성(props) 으로 전달 
+
+ 
+
+전달한 속성(props)를 받아 원하는대로 render 하여 사용 가능 
+
+```
+const { location } = this.props;
+       if (location.state) {
+            return (
+               <div className="detail__container">
+                    <h1>🎞 Movie details</h1>
+                    <span>{location.state.title}</span>
+                    <span>{location.state.summary}</span>
+                </div>
+            );
+ }
+```
+
 
 
 ---
 
 ## Google Material Design Icons 사용하기
+
