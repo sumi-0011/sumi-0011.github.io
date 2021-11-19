@@ -11,7 +11,36 @@ categories:
   - CNU TIME 
 tags: 
   - CNU TIME 
+
+
 ---
+
+
+
+## icon 사용
+
+
+
+## awesome icon 사용
+
+### 설치
+
+```
+npm i @fortawesome/fontawesome-svg-core
+npm i @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+npm i @fortawesome/react-fontawesome
+```
+
+
+
+### 사용법 
+
+```
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
+<FontAwesomeIcon icon={faChevronRight} />
+```
 
 
 
