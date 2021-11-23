@@ -284,3 +284,21 @@ $ yarn add cross-env --dev
 
 # https://velopert.com/3417 읽기
 
+
+
+
+
+# 반응형 웹
+
+## 모바일 우선 미디어 쿼리
+
+```
+// Mobile
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+// Tablet
+}
+@media screen and (min-width: 1024px) {
+// PC
+}
+```
+
