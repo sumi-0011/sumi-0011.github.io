@@ -26,6 +26,11 @@ const CategoryListWrapper = styled.div`
   flex-wrap: wrap;
   width: 768px;
   margin: 100px auto 0;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 20px;
+  }
 `
 // Query Parameter로 받은 category 이름과 동일한 아이템의 폰트를 더 굵게 표시
 // active : 현재 선택된 카테고리인지 확인하기 위한 Props
@@ -43,6 +48,9 @@ const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
 
   &:last-of-type {
     margin-right: 0;
+  }
+  @media (max-width: 768px) {
+    font-size: 15px;
   }
 `
 const CategoryList: FunctionComponent<CategoryListProps> = function ({
