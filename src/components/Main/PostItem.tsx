@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 // 포스트 요약
 // 썸네일 이미지
 // 포스트 링크
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { PostFrontmatterType } from 'types/PostItem.types'
 
 type PostItemProps = PostFrontmatterType & { link: string }
@@ -24,11 +25,10 @@ const PostItemWrapper = styled(Link)`
   }
 `
 // 해당 이미지의 너비는 부모 컴포넌트의 가로 길이에 따라 가변적으로 맞춰지지만, 높이는 그렇지 않기 때문에 200px로 맞춰주겠습니다.
-const ThumbnailImage = styled.img`
+const ThumbnailImage = styled(GatsbyImage)`
   width: 100%;
   height: 200px;
   border-radius: 10px 10px 0 0;
-  object-fit: cover;
 `
 const PostItemContent = styled.div`
   flex: 1;
@@ -90,18 +90,21 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
   date,
   categories,
   summary,
-  thumbnail,
+  thumbnail: {
+    childImageSharp: { gatsbyImageData },
+  },
   link,
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage src={thumbnail.publicURL} alt="Post Item Image" />
+      <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
+
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
         <Category>
-          {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
+          {categories.map(item => (
+            <CategoryItem key={item}>{item}</CategoryItem>
           ))}
         </Category>
         <Summary>{summary}</Summary>
