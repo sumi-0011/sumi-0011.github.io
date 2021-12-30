@@ -4,7 +4,7 @@ import GlobalStyle from 'components/Common/GlobalStyle'
 import Footer from 'components/Common/Footer'
 import CategoryList from 'components/Main/CategoryList'
 import Introduction from 'components/Main/Introduction'
-import PostList from 'components/Main/PostList'
+import PostList, { PostType } from 'components/Main/PostList'
 import { graphql } from 'gatsby'
 import { PostListItemType } from 'types/PostItem.types'
 
@@ -26,7 +26,6 @@ const Container = styled.div`
   flex-direction: column;
   height: 100%;
 `
-
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   data: {
     allMarkdownRemark: { edges },
@@ -42,6 +41,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     </Container>
   )
 }
+
 export default IndexPage
 
 export const getPostList = graphql`

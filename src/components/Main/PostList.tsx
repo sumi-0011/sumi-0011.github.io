@@ -2,12 +2,25 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import PostItem from 'components/Main/PostItem'
 import { PostListItemType } from 'types/PostItem.types'
-
-// 기존에 정의했던 PostListItemType 삭제
+export type PostType = {
+  node: {
+    id: string
+    frontmatter: {
+      title: string
+      summary: string
+      date: string
+      categories: string[]
+      thumbnail: {
+        publicURL: string
+      }
+    }
+  }
+}
 
 type PostListProps = {
   posts: PostListItemType[]
 }
+
 const PostListWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -22,6 +35,7 @@ const PostListWrapper = styled.div`
     padding: 50px 20px;
   }
 `
+
 const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
   return (
     <PostListWrapper>
@@ -31,4 +45,5 @@ const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
     </PostListWrapper>
   )
 }
+
 export default PostList
