@@ -8,14 +8,9 @@ import { Link } from 'gatsby'
 // 포스트 요약
 // 썸네일 이미지
 // 포스트 링크
-type PostItemProps = {
-  title: string
-  date: string
-  categories: string[]
-  summary: string
-  thumbnail: string
-  link: string
-}
+import { PostFrontmatterType } from 'types/PostItem.types'
+
+type PostItemProps = PostFrontmatterType & { link: string }
 const PostItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
@@ -100,7 +95,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage src={thumbnail} alt="Post Item Image" />
+      <ThumbnailImage src={thumbnail.publicURL} alt="Post Item Image" />
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
