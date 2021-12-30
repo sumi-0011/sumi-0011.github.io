@@ -4,6 +4,7 @@ import GlobalStyle from 'components/Common/GlobalStyle'
 import Footer from 'components/Common/Footer'
 import Introduction from 'components/Main/Introduction'
 import CategoryList from 'components/Main/CategoryList'
+import PostList from 'components/Main/PostList'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,6 +21,8 @@ const IndexPage: FunctionComponent = function () {
       <GlobalStyle />
       <Introduction />
       <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST} />
+      <PostList />
+
       <Footer />
     </Container>
   )
