@@ -106,3 +106,27 @@ if __name__ == '__main__':
 
 ### Gatsby로 기술 블로그 개발하기
 
+https://www.inflearn.com/course/gatsby-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8/dashboard
+
+- 섹션 1. 간단하게 페이지 띄워보기
+- 섹션 2. 글 목록을 띄워 줄 메인페이지 구현하기
+- 섹션 3. 메인 페이지에 실제 데이터 띄어보기
+
+
+
+섹션 3 에서 `gatsby-plugin-image 라이브러리` 사용에서 에러가 너무 많이나 힘들었지만
+
+결국 해결하고, 해결하는 과정 동안에 코드를 더욱 이해하는 과정이 되었던것 같다. 
+
+
+
+- **Gatsby** 에 대해서
+- EmotionJs 라이브러리란, 
+- 메인 페이지 구성 및 반응형 디자인
+- markdown 파일 추가, 세팅
+- gatsby-plugin-image 라이브러리로 최적화된 사진 띄워주기
+
+#### 결과물
+
+![image](https://user-images.githubusercontent.com/49177223/147758527-1c582541-bf58-4aa9-a44d-b9a1f81dfa2c.png)
+
