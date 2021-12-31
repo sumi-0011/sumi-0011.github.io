@@ -1,24 +1,16 @@
 ---
-layout: post
-
-
 date: 2021-07-24 13:56 +0800
-
 
 title: javascript30 - 07 - Array Cardio Day 2
 
-
-
-categories: 
+categories:
   - javascript30
-tags: 
+tags:
   - javascript30
   - web
   - study
 comments: false
 ---
-
-
 
 #### Array.prototype.some()
 
@@ -27,8 +19,6 @@ comments: false
 ```js
 arr.some(callback[, thisArg])
 ```
-
-
 
 #### Array.prototype.every()
 
@@ -42,13 +32,9 @@ every(callbackFn, thisArg)
 
   `callbackFn`을 실행할 때 `this`로 사용하는 값.
 
-
-
 #### Array.prototype.find()
 
 **find()** 메서드는 주어진 판별 함수를 만족하는 **첫 번째 요소**의 **값**을 반환합니다. 그런 요소가 없다면 [undefined](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined)를 반환합니다.
-
-
 
 Find is like filter, but instead returns just the one you are looking for
 
@@ -57,8 +43,6 @@ find the comment with the ID of 823423
 ```
 arr.find(callback[, thisArg])
 ```
-
-
 
 #### Array.prototype.findIndex()
 
@@ -88,8 +72,6 @@ arr.findIndex(callback(element[, index[, array]])[, thisArg])
 
   선택 사항. 콜백을 실행할 때 this로 사용할 객체입니다.
 
-
-
 출처 : https://developer.mozilla.org/ko/
 
 ---
@@ -100,55 +82,43 @@ arr.findIndex(callback(element[, index[, array]])[, thisArg])
 
 1.  Array.prototype.some() // is at least one person 19 or older?
 
-   ```js
-    isAdult = people.some(el => ((new Date().getFullYear()) - el.year) >=19);
-    console.log({isAdult}) ;
-   ```
-
-   
+```js
+isAdult = people.some((el) => new Date().getFullYear() - el.year >= 19);
+console.log({ isAdult });
+```
 
 2.  Array.prototype.every() // is everyone 19 or older?
 
-   ```js
-   allAdult = people.every(el => ((new Date().getFullYear()) - el.year) >=19);
-   console.log({allAdult}) ;
-   ```
-
-   
+```js
+allAdult = people.every((el) => new Date().getFullYear() - el.year >= 19);
+console.log({ allAdult });
+```
 
 3. Find is like filter, but instead returns just the one you are looking for find the comment with the ID of 823423
 
    ```js
-   result1 = comments.find(el => el.id ==823423 );
+   result1 = comments.find((el) => el.id == 823423);
    console.log(result1);
    ```
 
-   
-
-4. Find the comment with this ID 
+4. Find the comment with this ID
 
    ```js
-   result2 = comments.findIndex(el => el.id == 823423);
+   result2 = comments.findIndex((el) => el.id == 823423);
    console.log(result2);
    ```
 
-   
-
 5. delete the comment with the ID of 823423
 
-   4번에서 index를 찾아서 그 인덱스의 객체를 제거한다. 
+   4번에서 index를 찾아서 그 인덱스의 객체를 제거한다.
 
-    ```js
-    const newComments = [
-        ...comments.slice(0, index),
-        ...comments.slice(index + 1)
-    ];
-    
-    ```
-
-   
+   ```js
+   const newComments = [
+     ...comments.slice(0, index),
+     ...comments.slice(index + 1),
+   ];
+   ```
 
 ##### 결과 화면
 
 ![image](https://user-images.githubusercontent.com/49177223/126852655-75cd7b69-8f2c-4430-a906-12de13c58353.png)
-
