@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: single
 
+classes: wide
 
 date: 2021-09-30 22:35 +0800
 
