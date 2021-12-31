@@ -12,9 +12,11 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
-  - title: "Categories"
+  - title: "Category"
     url: /categories/
-  - title: "Tags"
+  - title: "Tag"
     url: /tags/
+  - title: "Archive"
+    url: /year-archiv
   - title: "About"
     url: /about/
