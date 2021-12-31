@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: single
 
 
 date: 2021-12-30 22:09 +0800
 
 title: 모각코처음하는사람들 1회차  2021.12.30 10시
-
+author_profile: true# 왼쪽부분 프로필을 띄울건지
   
 comments: true
 categories: 
