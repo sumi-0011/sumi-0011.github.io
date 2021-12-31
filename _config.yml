@@ -24,7 +24,7 @@ description: "An amazing website."
 url: "https://sumi-0011.github.io/"
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser: "/assets/images/sumi_profile1.jpg"
+teaser: "/assets/images/imag_sumi.jpg"
 logo: "/assets/images/sumi_profile1.jpg"
 masthead_title: # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
