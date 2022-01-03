@@ -21,3 +21,9 @@ export type PostListItemType = {
     frontmatter: PostFrontmatterType
   }
 }
+export type PostPageItemType = {
+  node: {
+    html: string
+    frontmatter: PostFrontmatterType
+  }
+}
