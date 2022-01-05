@@ -10,7 +10,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
 
-
 type IndexPageProps = {
   location: {
     search: string
@@ -34,12 +33,6 @@ type IndexPageProps = {
     }
   }
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`
 
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
@@ -99,12 +92,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       />
       <PostList selectedCategory={selectedCategory} posts={edges} />
     </Template>
-
   )
 }
-
 export default IndexPage
-
 export const getPostList = graphql`
   query getPostList {
     site {
