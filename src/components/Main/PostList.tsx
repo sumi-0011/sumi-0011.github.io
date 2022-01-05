@@ -5,7 +5,6 @@ import { PostListItemType } from 'types/PostItem.types'
 import useInfiniteScroll, {
   useInfiniteScrollType,
 } from 'hooks/useInfiniteScroll'
-
 export type PostType = {
   node: {
     id: string
@@ -20,7 +19,6 @@ export type PostType = {
     }
   }
 }
-
 type PostListProps = {
   selectedCategory: string
   posts: PostListItemType[]
