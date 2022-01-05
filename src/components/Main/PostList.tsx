@@ -61,6 +61,7 @@ const PostList: FunctionComponent<PostListProps> = function ({
           <PostItem {...frontmatter} link={slug} key={id} />
         ),
       )}
+
     </PostListWrapper>
   )
 }
