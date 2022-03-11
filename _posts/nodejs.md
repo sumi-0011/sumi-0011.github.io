@@ -49,14 +49,22 @@ app.listen(3000, function () {
 });
 
 app.use(express.static('public'));
-app.use(bodyParser.json());
+//express에 bodyParser을 쓴다는것을 알린다 (json형태로 받으면 bodyPaser.json())
+app.use(bodyParser.json());	
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/email_post', function (req, res) {
+	//console.log(req.body.email)
   console.log(req.body);
   res.send(req.body);
 });
 ```
+
+
+
+express에 bodyParser을 쓴다는것을 알린다 (json형태로 받으면 bodyPaser.json())
+
+`app.use(bodyParser.json());	`
 
 
 
@@ -87,3 +95,58 @@ app.post('/email_post', function (req, res) {
 ​	
 
 > 출처 : https://mommoo.tistory.com/60
+
+
+
+
+
+### View engine을 활용한 응답 처리
+
+ejs라는 뷰 템플릿을 이용해서
+
+express에서 html응답을 줄 때 data와 html을 어떻게 결합해서 줄까?
+
+
+
+```
+$ npm install ejs --save
+```
+
+명령어를 입력하여 `ejs`를 설치
+
+
+
+그리고 app.js에 추가
+
+```
+app.set("view engine","ejs");
+```
+
+"view engine"가 나오면 `"ejs"`라는 것을 express가 기억한다. 
+
+
+
+view는 지정된 디렉터리가 있기 때문에
+
+root폴더 하위에 `views`라는 폴더를 생성한다. 
+
+views/email.ejs
+
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>email ehs template</title>
+</head>
+
+<body>
+  <h1>Welcom !! <%= email %>
+  </h1>
+  <p>정말로 반가워요 ^^</p>
+</body>
+
+</html>
+```
+
