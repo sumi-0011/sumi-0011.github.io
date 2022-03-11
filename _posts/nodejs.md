@@ -160,7 +160,7 @@ views/email.ejs
 
 
 
-form.html에 ajax로 보내는 button을 추가
+form.html에 ajax로 보내는 button을 추가, `sendAjax()`메소드를 생성
 
 ```
  <form action="email_post" method="post">
@@ -169,5 +169,46 @@ form.html에 ajax로 보내는 button을 추가
   </form>
   //추가 부분
   <button class="ajaxsend">ajaxsend </button>
+  <script>
+    document.querySelector('.ajaxsend').addEventListener('click', function () {
+      let inputdata = document.forms[0].elements.value;
+      sendAjax('http:127.0.0.1:3000/ajax_send_email', inputdata)
+
+
+    })
+    function sendAjax(url, data) {
+      var data = { 'email': data };
+      data = JSON.stringify(data)
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      xhr.setRequestHeader('Content-Type', "application/json"); //서버로 json형태의 데이터를 보내것이라는 것을 표시
+      xhr.send(data);
+      xhr.addEventListener('load', function () {
+        console.log(xhr.responseText)
+      })
+    }
+  </script>
 ```
+
+여기까지 하면 `/ajax_send_email`의 경로에 데이터를 보내게 되는데 
+
+아직 `ajax_send_email`을 연결해 주지 않아 404 에러가 뜨게된다
+
+
+
+app.js
+
+```
+
+app.post("/ajax_send_email", function (req, res) {
+  console.log(req.body);
+});
+
+```
+
+![image](https://user-images.githubusercontent.com/49177223/157926412-570b0ab7-9b7d-4a0b-b5f8-7b7dedbf6707.png)
+
+
+
+에러가 뜨지않고 post가 잘 보내진 것을 확인할 수 있다!!
 
