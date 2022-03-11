@@ -150,3 +150,24 @@ views/email.ejs
 </html>
 ```
 
+
+
+결과 화면
+
+![image](https://user-images.githubusercontent.com/49177223/157892043-ef49b296-d89c-4f37-a336-4a5afcb789bd.png)
+
+### JSON 활용한 Ajax처리
+
+
+
+form.html에 ajax로 보내는 button을 추가
+
+```
+ <form action="email_post" method="post">
+    <input type="text" name="email" />
+    <input type="submit" value="submit">
+  </form>
+  //추가 부분
+  <button class="ajaxsend">ajaxsend </button>
+```
+
