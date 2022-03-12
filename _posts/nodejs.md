@@ -1,3 +1,7 @@
+# **Node.js 웹개발로 알아보는 백엔드 자바스크립트의 이해**
+
+https://www.inflearn.com/course/node-js-%EC%9B%B9%EA%B0%9C%EB%B0%9C#curriculum
+
 ## Post 요청 처리
 
 중요한 데이터가 url에 나타날 수 있기 때문에 post를 사용
@@ -212,3 +216,34 @@ app.post("/ajax_send_email", function (req, res) {
 
 에러가 뜨지않고 post가 잘 보내진 것을 확인할 수 있다!!
 
+
+
+---
+
+하다가 mysql연동이 되질않아서 다른거로 넘어감
+
+
+
+#  Node.js 를 이용해 웹애플리케이션 만들기
+
+## 간단한 웹앱 만들기
+
+
+
+```
+http
+  .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World\n");
+  })
+  .listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
+
+```
+
+node.js를 이용해서 웹 서버를 만들고 
+
+그 웹서버가 `port`번을 리스닝하도록 시킨다. 그리고 `hostname`을 통해 접속한 사용자에 대해서 응답하라는 코드이다. 
+
+그리고 그 응답 결과는 ` res.end("Hello World\n");`부분의 `"Hello World"`라는 text이다. 
