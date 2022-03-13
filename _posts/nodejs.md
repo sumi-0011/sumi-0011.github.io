@@ -247,3 +247,87 @@ node.js를 이용해서 웹 서버를 만들고
 그 웹서버가 `port`번을 리스닝하도록 시킨다. 그리고 `hostname`을 통해 접속한 사용자에 대해서 응답하라는 코드이다. 
 
 그리고 그 응답 결과는 ` res.end("Hello World\n");`부분의 `"Hello World"`라는 text이다. 
+
+
+
+## express
+
+
+
+```
+http
+  .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World\n");
+  })
+  .listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
+```
+
+```
+let server = http.createServer(function (req, res) {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello World\n");
+});
+server.listen(port, hostname, function () {
+  //server가 listeing에 성공했을때
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
+위의 두 코드는 같은 내용이다!
+
+
+
+### express 설치
+
+```
+npm install express --save
+```
+
+
+
+### express HelloWorld 예시
+
+```
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
+```
+
+
+
+사용자가 웹에 접속할때는 get방식이나 post방식으로 접근할 수 있다. 
+
+하지만 일반적으로 url을 직접 쳐서 들어오는 것은 get방식으로 접속하는 것이다. 
+
+그래서 get방식으로 접근한 사용자를 받기 위해서 get이라는 메소드를 호출한다. 
+
+
+
+그리고 get방식으로 접근한 사용자 중에서 홈페이지로 접속한 사용자를 구분하기 위해
+
+`app.get("/",접속했을때 실행시킬 함수)` 를 이용한다. 
+
+ 
+
+```
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+```
+
+응답을 해줄때는 두번째 인자인 `res`에 `send()`함수를  호출하여 이용한다. 
+
+`send()`함수에 인자로 전달한다. 
+
