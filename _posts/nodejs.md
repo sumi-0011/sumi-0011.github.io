@@ -453,3 +453,180 @@ app.get("/topic/:id", function (req, res) {
 });
 ```
 
+
+
+## Express Post방식을 이용한 정보의 전달
+
+
+
+### get vs post
+
+
+
+### post방식을 이용한 정보의 전달 2: form
+
+view폴더를 만들고 
+
+**views/form.jade**를 생성한다. 
+
+```
+doctype html  
+html  
+  head
+    meta(charset="utf-8")
+  body 
+    form(action="/form_receiver")
+      p 
+      input(type="text" name="title")
+      p 
+        textare(name="description")
+      p 
+        input(type="submit")
+```
+
+jade는 관심이 없으므로 그냥 붙여넣고 끝냄
+
+
+
+express.js에 아래와 같은 내용을 추가
+
+```
+...
+app.set("view engine", "jade");
+app.set("views", "./views");
+app.use(express.static("public")); //public 이라는 폴더를 정적인 파일이 존재하는 폴더로 하겠다.
+
+app.get("/form", function (req, res) {
+  res.render("form");
+});
+
+...
+```
+
+express.js를 실행해보니
+
+```
+Error: Cannot find module 'jade'
+```
+
+위와 같은 에러가 떠서 `jade`를 설치해준다. 
+
+```js
+npm install --save express jade
+```
+
+
+
+
+
+express.js에 다음과 같은 배용 추가
+
+```
+...
+
+app.get("/form_receiver", (req, res) => {
+  let title = req.query.title;
+  let description = req.query.description;
+
+  res.send(title + ", " + description);
+});
+
+...
+```
+
+
+
+
+
+결과 화면 (get방식의 경우)
+
+| ![image](https://user-images.githubusercontent.com/49177223/158196663-7e9a447e-22d4-4a4d-916f-67f1341854fb.png) | ![image](https://user-images.githubusercontent.com/49177223/158196825-fa7a7509-7b79-4d74-baf0-46759412bfbb.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+
+
+
+### post방식으로 보내기
+
+app.js에 추가
+
+```
+app.post("/form_receiver", (req, res) => {
+  let title = req.body.title;
+  let description = req.body.description;
+
+  res.send(title + ", " + description);
+});
+```
+
+form.jade
+
+```
+doctype html  
+html  
+  head
+    meta(charset="utf-8")
+  body 
+    form(action="/form_receiver" method="post")
+      p 
+        input(type="text" name="title")
+      p 
+        textarea(name="description")
+      p 
+        input(type="submit")
+```
+
+위 처럼 form의 method를 `post`로 변경
+
+
+
+하지만
+
+```
+TypeError: Cannot read properties of undefined (reading 'title')
+```
+
+이러한 에러가 발생
+
+
+
+post는 그냥 안됨
+
+body-parser필요
+
+
+
+실행을 멈추고 
+
+```
+npm install body-parser
+```
+
+을 이용해 `body-parser`를 설치
+
+
+
+express.js에 추가
+
+```
+...
+
+var bodyParser = require('body-parser')
+
+...
+
+app.use(bodyParser.urlencoded({ extension: false }));
+
+...
+```
+
+
+
+그리고 실행해보면
+
+![image](https://user-images.githubusercontent.com/49177223/158198642-a08edcde-2b60-4019-aa88-f7b4595f6772.png)
+
+post방식으로 url으로 데이터가 날라가지 않았지만 데이터가 전송된것을 확인 가능
+
+
+
+### get과 post용도
