@@ -387,3 +387,69 @@ pass~
 
 ### Query String
 
+정리 링크 : 
+
+
+
+#### query string 사용방법
+
+```
+app.get("/topic", function (req, res) {
+  res.send(req.query.id);
+});
+```
+
+결과
+
+![image](https://user-images.githubusercontent.com/49177223/158175531-98b10e3b-0545-454a-b1b0-2e8c262360b0.png)
+
+
+
+>  만약 쿼리 스트링으로 보내고 싶은 데이터가 중간에 space가 있다면 `+`로 대체하면 된다
+>
+> ```
+> http/localhost:3000?name=byun+sumi
+> ```
+>
+> => name = "byun sumi"
+
+
+
+#### query 객체의 이용
+
+```
+app.get("/topic", function (req, res) {
+  let topics = ["JavaScript is...", "NodeJs is...", "Express is..."];
+  let output = `<a href="/topic?id=0">JavaScript</a><br><a href="/topic?id=1">NodeJs</a><br><a href="/topic?id=2">Express</a><br>${
+    topics[req.query.id]
+  }`;
+  res.send(output);
+});
+```
+
+![image](https://user-images.githubusercontent.com/49177223/158176609-9396aef2-eaa0-496c-85a5-f3330a2ca66a.png)
+
+
+
+
+
+### 시멘틱 URL
+
+쿼리스트링으로 접근할때에는 `request.query`객체를 사용하면 되고
+
+path방식으로 들어오는 시멘틱 URL을 이용하는 방법에는 `request.param`객체를 사용하면 된다. 
+
+
+
+사용방법
+
+```
+app.get("/topic/:id", function (req, res) {
+  let topics = ["JavaScript is...", "NodeJs is...", "Express is..."];
+  let output = `<a href="/topic?id=0">JavaScript</a><br><a href="/topic?id=1">NodeJs</a><br><a href="/topic?id=2">Express</a><br>${
+    topics[req.params.id]
+  }`;
+  res.send(output);
+});
+```
+
