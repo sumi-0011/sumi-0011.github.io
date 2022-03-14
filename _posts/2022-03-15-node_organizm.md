@@ -11,12 +11,19 @@ comments: true
 categories: 
   - 
 tags: 
-  - 
+  - nodejs
+  - express
   
 
 
  
 ---
+
+
+
+![img](https://user-images.githubusercontent.com/49177223/158240892-12002a70-4746-4dfe-88a6-bb81d162b478.png)
+
+
 
 inflearn egoing님의 Node.js 를 이용해 웹애플리케이션 만들기강좌를 보고 정리한 내용입니다. 
 
@@ -181,3 +188,190 @@ app.get("/topic", function (req, res) {
   res.send(req.query.id);
 });
 ```
+
+**query 객체의 이용**
+
+```
+app.get("/topic", function (req, res) {
+  let topics = ["JavaScript is...", "NodeJs is...", "Express is..."];
+  let output = `<a href="/topic?id=0">JavaScript</a><br><a href="/topic?id=1">NodeJs</a><br><a href="/topic?id=2">Express</a><br>${
+    topics[req.query.id]
+  }`;
+  res.send(output);
+});
+```
+
+
+### 시멘틱 URL
+
+시멘틱 URL을 이용하여 쿼드 스트링 없이 정보를 전달할 수 있다. 
+
+시멘틱(Semanic)은 의미의, 의미론적 이라는 것을 뜻하는 단어이다. 
+
+![image](https://user-images.githubusercontent.com/49177223/158237526-7c11ea30-9721-4df7-b1b0-9313fd33eee8.png)
+위와 같이 왼쪽에 나타나있는 쿼드스트링은 알아보기가 어렵다. 
+
+
+**의미를 강조하는 시멘틱 URL**에서는 프로퍼티와 값을 구구절절하게 표시하는 것이 URL의 의미를 해석하는 것을 오히려 방해하기 때문에, 프로퍼티를 숨기고 값에 집중하는 새로운 방법을 사용한다. 
+
+
+
+**사용방법**
+```
+app.get("/topic/:id", function (req, res) {
+  let topics = ["JavaScript is...", "NodeJs is...", "Express is..."];
+  let output = `<a href="/topic?id=0">JavaScript</a><br><a href="/topic?id=1">NodeJs</a><br><a href="/topic?id=2">Express</a><br>${
+    topics[req.params.id]
+  }`;
+  res.send(output);
+});
+```
+
+> 쿼리스트링으로 접근할때에는 `request.query`객체를 사용하면 되고
+> path방식으로 들어오는 시멘틱 URL을 이용하는 방법에는 `request.param`객체를 사용하면 된다. 
+
+
+
+## Post방식을 이용한 정보의 전달
+
+### get vs post
+
+http는 웹상에서 Client와 Server간에 요청/응답으로 데이터를 주고 받을 수 있는 프로토콜이다. 
+Client가 HTTP 프로토콜을 통헤 서버에게 요청을 보내면 서버는 요청에 맞는 응답을 client에 전송하고, 이따 HTTP 요펑에 포함되는 HTTP메소드는 서버가 요청을 수행하기 위해 해야할 행동을 표시하는 용도입니다. 
+이러한 HTTP메소드는 GET, POST등이 있습니다. 이 둘의 차이점을 아래에서 알아보겠습니다. 
+
+
+#### Get
+Get은 서버로부터 정보를 조회하기 위해 설계된 메소드입니다. 
+
+Get은 요청을 전송할 때 필요한 데이터를 Body에 담지 않고, 쿼드스트링을 통하여 전송합니다. 
+
+쿼드스트링을 포함한 url예시
+```
+www.example-url.com/resources?name1=value1&name2=value2
+```
+
+#### Post
+Post는 리소스를 생성/변경하기 위해 설계되었습니다. 
+
+때문에 Get과달리 전송해야 할 데이터를 Http메세지의 Body에 담아서 전송합니다. Http메세지의 Body는 길이의 제한없이 데이터를 전송할수 있어, Post요청은 Get과 달리 대용량 데이터 처리에 적합합니다. 
+
+
+#### Get과 Post의 용도
+
+Get의 경우, 
+Idempotent하게 설계되어 **서버에 동일한 요청을 여러 번 전송하더라도 동일한 응답이 돌아와야** 합니다. 
+따라서 Get은 설계 원칙에 따라 서버의 데이터나 상태를 변경시키지 않아야 Idempotent하기 때문에, 주로 **조회**를 할때에 사용해야합니다. 
+
+Post의 경우, 
+Non-Idempotent하게 설계되어 **서버에 동일한 요청을 여러번 전송하여도 응답은 매번 다를수 있습니다.**
+따라서 Post는 서버의 상태나 데이터를 변경시킬때 사용됩니다. 
+
+
+> POST : 생성, 수정, 삭제 사용가능 
+> but
+> 생성 : POST
+> 수정 : PUT, PATCH
+> 삭제 : DELETE
+> 로 사용하는 것이 용도에 맞는 사용법이다. 
+
+### Get방식으로 보내기
+먼저 view폴더를 만들고 
+**views/form.jade**를 생성한다. 
+```
+doctype html  
+html  
+  head
+    meta(charset="utf-8")
+  body 
+    form(action="/form_receiver")
+      p 
+      input(type="text" name="title")
+      p 
+        textare(name="description")
+      p 
+        input(type="submit")
+```
+
+jade는 위에서 배운 템플릿엔진으로 이렇게 사용하는 구나 라는것만 알고 넘어가기로 한다. 
+form 태그를 만들고 `method`옵션을 설정하지 않았으므로 `Get`방식으로 실행한다.
+
+app.js에 아래와 같은 내용을 추가
+
+```
+...
+app.set("view engine", "jade");
+app.set("views", "./views");
+app.use(express.static("public")); //public 이라는 폴더를 정적인 파일이 존재하는 폴더로 하겠다.
+
+app.get("/form", function (req, res) {
+  res.render("form");
+});
+
+...
+```
+
+
+
+결과 화면
+
+| ![image](https://user-images.githubusercontent.com/49177223/158196663-7e9a447e-22d4-4a4d-916f-67f1341854fb.png) | ![image](https://user-images.githubusercontent.com/49177223/158196825-fa7a7509-7b79-4d74-baf0-46759412bfbb.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+
+
+
+### Post방식으로 보내기
+
+app.js에 밑과 같은 코드 추가
+```
+app.post("/form_receiver", (req, res) => {
+  let title = req.body.title;
+  let description = req.body.description;
+
+  res.send(title + ", " + description);
+});
+```
+
+form.jade
+```
+doctype html  
+html  
+  head
+    meta(charset="utf-8")
+  body 
+    form(action="/form_receiver" method="post")
+      p 
+        input(type="text" name="title")
+      p 
+        textarea(name="description")
+      p 
+        input(type="submit")
+```
+위 처럼 form의 method를 `post`로 변경하여 POST방식으로 보낼것이라고 작성한다. 
+
+app.js를 실행하면 
+
+```
+TypeError: Cannot read properties of undefined (reading 'title')
+```
+와 같은 에러가 뜨게된다. 
+
+이유는 get의 경우는 url에서 바로 뽑아서 사용이 가능하지만
+post의 경우에는 별도의 모듈이 필요하기 때문이다. 
+따라서 post요청을 처리할때는 `body-parser`모듈을 이용한다. 
+
+**설치 방법**
+```
+# body-parser 설치
+npm install body-parser --save
+```
+
+다시 app.js를 싱핼해보면
+url에 데이터가 보이지 않지만 데이터가 전송된 것을 확인할 수 있다. 
+
+![image](https://user-images.githubusercontent.com/49177223/158198642-a08edcde-2b60-4019-aa88-f7b4595f6772.png)
+
+
+
+## 출처
+https://www.inflearn.com/course/nodejs-%EA%B0%95%EC%A2%8C-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/dashboard
