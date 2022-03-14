@@ -331,3 +331,59 @@ app.get("/", (req, res) => {
 
 `send()`함수에 인자로 전달한다. 
 
+
+
+### express, 정적파일을 서비스하는 법
+
+Express의 기본 제공 미들웨어 함수인 `express.static`을 사용하여 정적파일을 제공할 수 있다. 
+
+
+
+다음과 같은 코드를 이용하여 `public`이라는 이름의 디렉토리에 포함된 이미지, CSS 파일 및 JavaScript 파일을 제공가능. 
+
+```javascript
+app.use(express.static('public'));
+```
+
+위와 같이 사용하여  `public` 디렉토리에 포함된 파일을 로드할 수 있습니다.
+
+=> public 이라는 폴더를 정적인 파일이 존재하는 폴더로 하겠다. 라는 뜻이다. 
+
+
+
+public 폴더에 `peace,jpg`파일을 넣고 
+
+```
+app.get("/route", (req, res) => {
+  res.send("Hello Router! <img src='/peace.jpg'/>");
+});
+```
+
+위와 같은 방법으로 사용하면 된다.
+
+
+
+### express 템플릿 엔진
+
+ **템플릿 엔진(Templete Engine)은 PHP나 JSP처럼 동적인 결과를 정적인 파일(HTML)에 담기 위해 사용**한다. 
+
+즉, **서버 코드인 Javascript로 연산된 결과를 변수에 넣고 변수를 뷰(view) 파일에서도 사용할 수 있도록 도와준다.** 
+
+
+
+템플릿이 제공하는 기본적인 틀을 이용해 더 빠르고 수월하게 개발할수 있는것
+
+오른쪽과 왼쪽의 내용은 같은 내용이다. 
+
+![image](https://user-images.githubusercontent.com/49177223/158160525-ad850dbb-5e7e-48e0-8ed5-9ba8a0c33456.png)
+
+
+
+나는 프론트 개발자로 왼쪽의 방법이 더 편하기 때문에 
+
+pass~
+
+
+
+### Query String
+
