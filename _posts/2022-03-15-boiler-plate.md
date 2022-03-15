@@ -169,3 +169,43 @@ $ npm install nodemon --save-dev
 
 
 `dev`를 붙이는 이유는 local에서 할때랑 배포할때랑, local에서만 사용하겠다. 
+
+
+
+그리고 편하게 사용하기 위해서 script를 하나 더 추가한다. 
+
+```
+ "scripts": {
+    "start": "node index.js",
+    "backend": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+
+
+그리고 실행은 
+
+`npm run backend`로 실행
+
+
+
+### #9 비밀 설정 정보 관리
+
+지금까지 했던 내용중 디비 연결  username, password부분은 유출되면 안되는 비밀 설정 정보이다. 
+
+그래서 이부분을 따로 빼놓아 git에 올리지 않도록 해야한다. 
+
+
+
+여기서 local환경에서의 `development`와 배포한후의 `production`을 따로 생각해 주어야 한다. 
+
+development모드일 때에는 아래에서 `mongoURI`를 가져올수 있다. 
+
+```
+module.exports = {
+  mongoURI:
+    "mongodb+srv://<username>:<password>@boiler-plate.tsurp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+};
+```
+
