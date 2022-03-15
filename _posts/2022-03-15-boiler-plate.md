@@ -101,8 +101,71 @@ npm install body-parser --save
 
 
 
-로그인을 하거나 회원가입을 할때 
+로그인을 하거나 회원가입을 할때 UI를 만들어 놓은것이 없기떄문에, 데이터를 찍을 클라이언트 없이 보낼수가 없다. 
+
+그것을 대체하기 위하여 `포스트맨`을 설치한다.
 
 
 
+그리고 register route를 만들겠다. 
 
+이제는 회원가입 기능을 만들것이다.
+
+
+
+```
+const express = require("express");
+const app = express();
+const port = 5000;
+const bodyParser = require("body-parser");
+const { User } = require("./models/User");
+
+//applications/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extension: true }));
+
+//applications/json 타입으로 된 것을 분석해서 가져올 수 있게
+app.use(bodyParser.json());
+
+...
+
+app.post("/register", (req, res) => {
+  //회원 가입 할때 필요한 정보들을 client에서 가져오면
+  //그것들을 데이터 베이스에 넣어준다.
+  const user = new User(req.body); //정보들을 user모델에 저장해준다.
+
+  user.save((err, userInfo) => {
+    if (err) return res.json({ success: false, err });
+    //status 200 : 성공했다는 표시
+    return res.status(200).json({ success: true });
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
+```
+
+
+
+postman에서
+
+![image](https://user-images.githubusercontent.com/49177223/158444027-b43bae01-a27a-4826-8f12-2c875a0838f8.png)
+
+
+
+### #8 nodemon
+
+NODEMON?? 
+
+소스를 변경할 때 그것 감지해서 자동으로 서버를 재 시작해주는 api
+
+
+
+```
+$ npm install nodemon --save-dev
+```
+
+
+
+`dev`를 붙이는 이유는 local에서 할때랑 배포할때랑, local에서만 사용하겠다. 
