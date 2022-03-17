@@ -796,3 +796,41 @@ app.get("/api/users/logout", auth, (req, res) => {
 });
 ```
 
+
+
+
+
+### # 16 create-react-app
+
+root폴더에
+
+`client`와 `server`폴더를 생성하고
+
+위에서 작업했던 `config`, `middleware`, `models`폴더와 `index.js`를 `server`폴더로 옮긴다. 
+
+![image-20220317002213300](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220317002213300.png)
+
+
+
+그리고 client에 create-react0app
+
+```
+$ cd client
+$ npx create-react-app .
+```
+
+.(dot)의 의미는 client즉 현재 위치의 폴더에 react를 설치 하겠다. 
+
+
+
+
+
+### #17 npx npm 차이
+
+
+
+
+
+### #18 구조 설명
+
+![image-20220317002156604](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220317002156604.png)
