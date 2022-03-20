@@ -834,3 +834,147 @@ $ npx create-react-app .
 ### #18 구조 설명
 
 ![image-20220317002156604](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220317002156604.png)
+
+
+
+### 21 데이터 FLOW & AXOIS
+
+![image-20220319215316911](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220319215316911.png)
+
+
+
+LandingPage.js
+
+```
+import React, { useEffect } from "react";
+import axios from "axios";
+function LandingPage() {
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/hello").then((response) => {
+      console.log(response);
+    });
+  }, []);
+  return <div>LandingPage 랜딩페이지</div>;
+}
+
+export default LandingPage;
+
+```
+
+
+
+### #22 CORS이슈, Proxy 설정
+
+server은 `5000번 port`
+
+client는 `3000번 port`
+
+이렇게 두개의 달느포트를 가지고 있는 서버는 아무 설정 없이 request를 보낼수 없다.
+
+
+
+해결하는 방법은 여러가지가 있는데 이중에서 Proxy를 사용하는 방법으로 해결한다. 
+
+
+
+https://create-react-app.dev/docs/proxying-api-requests-in-development/
+
+Proxy를 입의로 설정
+
+
+
+먼저 모듈 다운받기
+
+```
+yarn add http-proxy-middleware
+```
+
+
+
+그리고 setipProxy.js를 생성하여 붙여넣기
+
+```
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = function(app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+};
+```
+
+
+
+### #23 Proxy server
+
+1. 아이피를 Proxy server에서 임의로 바꿔 버릴 수 있다. 그래서 인터넷에서는 접근하는 사람의 IP를 모르게 된다. 
+2. 보내는 데이터도 임의로 바꿀수 있다. 
+
+
+
+Proxy server 
+
+1. 방화벽 기능
+2. 웹 필터 기능
+3. 캐쉬 데이터, 공유 데이터 제공 기능
+
+
+
+사용이유
+
+1. 회사나 직원들이나 집안에서 아이들 인터넷 사용제서
+2. 캐쉬를 이용해 더 빠른 인터넷 이용 제공
+3. 더 나은 보안 제공
+4. 이용제한된 사이트 접근 가능
+
+
+
+
+
+### #24 Concurrently
+
+concurrently를 이용해서 프론트, 백 서버 한번에 켜기
+
+
+
+여러개의 command를 동시에 작동 시킬수 있게 해주는 tool
+
+
+
+먼저 concurrently를 설치하고
+
+```
+$ npm install concurrntly --save
+```
+
+
+
+pakage.json에 추가
+
+```
+ "scripts": {
+   	...
+    "dev" :"concurrently \"npm run backend\" \"npm run start --prefix client\""
+  },
+```
+
+
+
+
+
+### #antd CSS Framework
+
+Css Frame work를 쓰는 이유는?
+
+기능을 만드는데 더욱 집중하기 위해서
+
+
+
+여기서 사용할것은
+
+https://ant.design/
+
